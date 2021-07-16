@@ -10,8 +10,7 @@ function Dashboard() {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
 
-  const { isLoading, showAlert, fetchJobs, createJob, user } =
-    useGlobalContext()
+  const { isLoading, showAlert, fetchJobs, createJob } = useGlobalContext()
 
   const handleSubmit = (e) => {
     e.preventDefault()
