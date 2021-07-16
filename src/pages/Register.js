@@ -5,9 +5,9 @@ import { Redirect } from 'react-router-dom'
 import FormRow from '../components/FormRow'
 function Register() {
   const [values, setValues] = useState({
-    name: 'john',
-    email: 'john@gmail.com',
-    password: 'secret',
+    name: '',
+    email: '',
+    password: '',
     isMember: true,
   })
 
