@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Home, Dashboard, Register, Edit, Error, PrivateRoute } from './pages'
-import Navbar from './components/Navbar'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Home, Dashboard, Register, Edit, Error, PrivateRoute } from './pages';
+import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
-      <Navbar />
       <Switch>
         <Route path='/' exact>
           <Home />
@@ -24,7 +23,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

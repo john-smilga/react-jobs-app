@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import logo from '../assets/logo.svg'
+import React from 'react';
+import styled from 'styled-components';
+import logo from '../assets/logo.svg';
 
-import { useGlobalContext } from '../context/appContext'
+import { useGlobalContext } from '../context/appContext';
 
 const Navbar = () => {
-  const { user, logout } = useGlobalContext()
+  const { user, logout } = useGlobalContext();
   return (
     <Wrapper>
       <div className='nav-center'>
@@ -20,11 +20,10 @@ const Navbar = () => {
         )}
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.nav`
-  background: var(--white);
   height: 6rem;
   display: flex;
   align-items: center;
@@ -46,6 +45,6 @@ const Wrapper = styled.nav`
     margin: 0;
     margin-right: 2rem;
   }
-`
+`;
 
-export default Navbar
+export default Navbar;
