@@ -4,6 +4,7 @@ import { useGlobalContext } from '../context/appContext';
 import FormRow from '../components/FormRow';
 import Navbar from '../components/Navbar';
 import Jobs from '../components/Jobs';
+
 function Dashboard() {
   const [values, setValues] = useState({ company: '', position: '' });
 
@@ -27,7 +28,13 @@ function Dashboard() {
   return (
     <>
       <Navbar />
+
       <Wrapper className='page'>
+        {showAlert && (
+          <div className='alert alert-danger'>
+            there was an error, please try again
+          </div>
+        )}
         <form className='job-form' onSubmit={handleSubmit}>
           {/* company */}
           <FormRow
@@ -53,11 +60,7 @@ function Dashboard() {
             {isLoading ? 'Adding New Job...' : 'Add Job'}
           </button>
         </form>
-        {showAlert && (
-          <div className='alert alert-danger'>
-            there was an error, please try again
-          </div>
-        )}
+
         <Jobs />
       </Wrapper>
     </>
@@ -65,19 +68,17 @@ function Dashboard() {
 }
 
 const Wrapper = styled.section`
+  margin-top: 3rem;
   .job-form {
     background: var(--white);
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    column-gap: 2rem;
+    row-gap: 1rem;
+    column-gap: 0.5rem;
     align-items: center;
     margin-bottom: 3rem;
-    margin-top: 3rem;
     border-radius: var(--borderRadius);
     padding: 1.5rem;
     .form-input {
-      background: transparent;
-      border-color: var(--grey-200);
       padding: 0.75rem;
     }
 
@@ -88,14 +89,20 @@ const Wrapper = styled.section`
       margin-bottom: 0;
     }
     .btn {
-      height: 100%;
-      padding: 0 1.5rem;
+      padding: 0.75rem;
+    }
+    @media (min-width: 776px) {
+      grid-template-columns: 1fr 1fr auto;
+      .btn {
+        height: 100%;
+        padding: 0 2rem;
+      }
+      column-gap: 2rem;
     }
   }
   .alert {
     max-width: var(--max-width);
-    margin-top: -1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 `;
 
