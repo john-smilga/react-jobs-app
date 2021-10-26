@@ -7,8 +7,8 @@ const JobColumns = () => {
       <span>company</span>
       <span>position</span>
       <span>date</span>
-      <span>status</span>
-      <span>action</span>
+      <span className='center'>status</span>
+      <span className='center'>action</span>
     </Wrapper>
   );
 };
@@ -19,16 +19,15 @@ const Wrapper = styled.section`
   border-top-left-radius: var(--borderRadius);
   border-top-right-radius: var(--borderRadius);
   display: grid;
-  grid-template-columns: 1fr 1fr 200px 75px 75px;
+  grid-template-columns: 1fr 1fr 200px 100px 100px;
   align-items: center;
   padding: 1rem 1.5rem;
   column-gap: 1rem;
   text-transform: capitalize;
   letter-spacing: var(--letterSpacing);
-  font-size: 0.875rem;
-  span:last-child {
+  font-size: var(--small-text);
+  .center {
     text-align: center;
-    margin-left: 0.15rem;
   }
 `;
 

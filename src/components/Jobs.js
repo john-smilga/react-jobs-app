@@ -73,7 +73,7 @@ const Container = styled.section`
   .job {
     border-bottom: 1px solid var(--grey-200);
     display: grid;
-    grid-template-columns: 1fr 1fr 200px 75px auto;
+    grid-template-columns: 1fr 1fr 200px 100px 100px;
     align-items: center;
     padding: 1rem 1.5rem;
     column-gap: 1rem;
@@ -82,7 +82,7 @@ const Container = styled.section`
     border-bottom: none;
   }
   span {
-    font-size: 0.875rem;
+    font-size: var(--small-text);
   }
   .company,
   .position {
@@ -91,8 +91,6 @@ const Container = styled.section`
   .date {
     font-weight: 400;
     color: var(--grey-500);
-
-    font-size: 0.75rem;
   }
   .status {
     color: var(--grey-500);
@@ -107,8 +105,6 @@ const Container = styled.section`
     background: var(--green-light);
     border-color: transparent;
     border-radius: var(--borderRadius);
-    margin-right: 0.75rem;
-    margin-left: 1.5rem;
     cursor: pointer;
     display: inline-block;
   }
@@ -123,11 +119,13 @@ const Container = styled.section`
   .edit-btn,
   .delete-btn {
     padding: 0.15rem 0.5rem;
-    font-size: 0.5rem;
+    font-size: var(--smallText);
   }
   .action-div {
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 0 0.5rem;
   }
 `;
 

@@ -45,6 +45,7 @@ html {
   --headingFont: 'Roboto', sans-serif;
   --bodyFont: 'Nunito', sans-serif;
   --smallText: 0.7em;
+  --small-text: 0.875rem;
   /* rest of the vars */
   --backgroundColor: var(--grey-50);
   --textColor: var(--grey-900);
