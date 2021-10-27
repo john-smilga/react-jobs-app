@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useParams, Redirect, Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { useGlobalContext } from '../context/appContext'
-import FormRow from '../components/FormRow'
+import { useState, useEffect } from 'react';
+import { useParams, Redirect, Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { useGlobalContext } from '../context/appContext';
+import FormRow from '../components/FormRow';
+import Navbar from '../components/Navbar';
 function Update() {
-  const { id } = useParams()
+  const { id } = useParams();
   const {
     showAlert,
     isLoading,
@@ -14,38 +15,37 @@ function Update() {
     user,
     editJob,
     editComplete,
-  } = useGlobalContext()
+  } = useGlobalContext();
 
   const [values, setValues] = useState({
     company: '',
     position: '',
     status: '',
-  })
+  });
 
   useEffect(() => {
-    fetchSingleJob(id)
-  }, [id])
+    fetchSingleJob(id);
+  }, [id]);
 
   useEffect(() => {
     if (editItem) {
-      const { company, position, status } = editItem
-      setValues({ company, position, status })
+      const { company, position, status } = editItem;
+      setValues({ company, position, status });
     }
-  }, [editItem])
+  }, [editItem]);
 
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value })
-  }
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const { company, position, status } = values
+    e.preventDefault();
+    const { company, position, status } = values;
     if (company && position) {
-      editJob(id, { company, position, status })
+      editJob(id, { company, position, status });
     }
-  }
-  console.log(editItem)
+  };
   if (isLoading && !editItem) {
-    return <div className='loading'></div>
+    return <div className='loading'></div>;
   }
 
   if (!editItem || error) {
@@ -57,17 +57,13 @@ function Update() {
           dasboard
         </Link>
       </ErrorContainer>
-    )
+    );
   }
   return (
     <>
       {!user && <Redirect to='/' />}
+      <Navbar />
       <Container className='page'>
-        <header>
-          <Link to='/dashboard' className='btn'>
-            dasboard
-          </Link>
-        </header>
         {showAlert && (
           <div className='alert alert-danger'>
             there was an error, please try again
@@ -77,50 +73,64 @@ function Update() {
           <p>{editComplete && 'Success! Edit Complete'}</p>
           <h4>Update Job</h4>
           {/* company */}
-          <FormRow
-            type='name'
-            name='company'
-            value={values.company}
-            handleChange={handleChange}
-          />
-          <FormRow
-            type='name'
-            name='position'
-            value={values.position}
-            handleChange={handleChange}
-          />
-          <div className='form-row'>
-            <label htmlFor='status' className='form-label'>
-              Status
-            </label>
-            <select
-              name='status'
-              value={values.status}
-              onChange={handleChange}
-              className='status'
+          <div className='form-container'>
+            <FormRow
+              type='name'
+              name='position'
+              value={values.position}
+              handleChange={handleChange}
+            />
+            <FormRow
+              type='name'
+              name='company'
+              value={values.company}
+              handleChange={handleChange}
+            />
+            <div className='form-row'>
+              <label htmlFor='status' className='form-label'>
+                Status
+              </label>
+              <select
+                name='status'
+                value={values.status}
+                onChange={handleChange}
+                className='status'
+              >
+                <option value='pending'>pending</option>
+                <option value='interview'>interview</option>
+                <option value='declined'>declined</option>
+              </select>
+            </div>
+            <button
+              type='submit'
+              className='btn btn-block submit-btn'
+              disabled={isLoading}
             >
-              <option value='pending'>pending</option>
-              <option value='interview'>interview</option>
-              <option value='declined'>declined</option>
-            </select>
+              {isLoading ? 'Editing...' : 'Edit'}
+            </button>
+
+            <Link to='/dashboard' className='btn btn-block back-home'>
+              back home
+            </Link>
           </div>
-          <button type='submit' className='btn btn-block' disabled={isLoading}>
-            {isLoading ? 'Editing...' : 'Edit'}
-          </button>
         </form>
       </Container>
     </>
-  )
+  );
 }
 const ErrorContainer = styled.section`
   text-align: center;
   padding-top: 6rem; ;
-`
+`;
 
 const Container = styled.section`
-  header {
+  footer {
     text-align: center;
     margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  .form {
+    max-width: var(--max-width);
   }
   .form h4 {
     text-align: center;
@@ -137,5 +147,36 @@ const Container = styled.section`
     border-color: transparent;
     padding: 0.25rem;
   }
-`
-export default Update
+  .back-home {
+    text-align: center;
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.15;
+    background: var(--grey-500);
+  }
+  .back-home:hover {
+    background: var(--black);
+  }
+  @media (min-width: 768px) {
+    .form h4 {
+      text-align: left;
+    }
+    .form-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 100px;
+      column-gap: 0.5rem;
+      align-items: center;
+    }
+
+    .submit-btn,
+    .back-home {
+      margin: 0;
+    }
+
+    .form > p {
+      text-align: left;
+    }
+  }
+`;
+export default Update;

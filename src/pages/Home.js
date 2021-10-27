@@ -37,6 +37,7 @@ function Home() {
 
 const Wrapper = styled.div`
   .container {
+    min-height: calc(100vh - 6rem);
     display: grid;
     align-items: center;
     margin-top: -3rem;

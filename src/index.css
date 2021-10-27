@@ -264,7 +264,6 @@ ul {
   margin-top: -1rem;
 }
 .page {
-  min-height: calc(100vh - 6rem);
   width: var(--fluid-width);
   max-width: var(--max-width);
   margin: 0 auto;

@@ -36,16 +36,6 @@ function Dashboard() {
           </div>
         )}
         <form className='job-form' onSubmit={handleSubmit}>
-          {/* company */}
-          <FormRow
-            type='name'
-            name='company'
-            value={values.company}
-            handleChange={handleChange}
-            horizontal
-            placeholder='Company'
-          />
-
           {/* position */}
           <FormRow
             type='name'
@@ -55,7 +45,15 @@ function Dashboard() {
             horizontal
             placeholder='Position'
           />
-
+          {/* company */}
+          <FormRow
+            type='name'
+            name='company'
+            value={values.company}
+            handleChange={handleChange}
+            horizontal
+            placeholder='Company'
+          />
           <button type='submit' className='btn' disabled={isLoading}>
             {isLoading ? 'Adding New Job...' : 'Add Job'}
           </button>

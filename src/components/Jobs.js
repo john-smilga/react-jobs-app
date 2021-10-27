@@ -33,8 +33,8 @@ const Jobs = () => {
           date = date.format('MMMM Do, YYYY');
           return (
             <article key={id} className='job'>
-              <span className='company'>{company}</span>
               <span className='position'>{position.toLowerCase()}</span>
+              <span className='company'>{company}</span>
               <span className='date'>{date}</span>
               <span className='status'>{status}</span>
               <div className='action-div'>
@@ -73,7 +73,7 @@ const Container = styled.section`
   .job {
     border-bottom: 1px solid var(--grey-200);
     display: grid;
-    grid-template-columns: 1fr 1fr 200px 100px 100px;
+    grid-template-columns: 1fr 1fr 150px 100px 100px;
     align-items: center;
     padding: 1rem 1.5rem;
     column-gap: 1rem;
@@ -121,10 +121,14 @@ const Container = styled.section`
     padding: 0.15rem 0.5rem;
     font-size: var(--smallText);
   }
+  .edit-btn,
+  .delete-btn {
+    font-size: 1rem;
+  }
   .action-div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-left: 1rem;
     gap: 0 0.5rem;
   }
 `;

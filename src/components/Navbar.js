@@ -24,26 +24,44 @@ const Navbar = () => {
 };
 
 const Wrapper = styled.nav`
-  height: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
   .nav-center {
     width: var(--fluid-width);
-    max-width: var(--max-width);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
   }
   .nav-links {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
   }
   .nav-links h5 {
     margin: 0;
     margin-right: 2rem;
+  }
+  @media (min-width: 576px) {
+    height: 6rem;
+
+    .nav-center {
+      max-width: var(--max-width);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links {
+      margin-top: 0;
+    }
+    img {
+      margin-top: 0;
+      margin-left: 0;
+    }
   }
 `;
 
