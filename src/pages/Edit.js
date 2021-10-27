@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar';
 function Update() {
   const { id } = useParams();
   const {
-    showAlert,
     isLoading,
     editItem,
     fetchSingleJob,
@@ -67,11 +66,11 @@ function Update() {
       {!user && <Redirect to='/' />}
       <Navbar />
       <Container className='page'>
-        {showAlert && (
-          <div className='alert alert-danger'>
-            there was an error, please try again
-          </div>
-        )}
+        <header>
+          <Link to='/dashboard' className='btn btn-block back-home'>
+            back home
+          </Link>
+        </header>
         <form className='form' onSubmit={handleSubmit}>
           <p>{editComplete && 'Success! Edit Complete'}</p>
           <h4>Update Job</h4>
@@ -111,10 +110,6 @@ function Update() {
             >
               {isLoading ? 'Editing...' : 'Edit'}
             </button>
-
-            <Link to='/dashboard' className='btn btn-block back-home'>
-              back home
-            </Link>
           </div>
         </form>
       </Container>
@@ -127,13 +122,12 @@ const ErrorContainer = styled.section`
 `;
 
 const Container = styled.section`
-  footer {
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+  header {
+    margin-top: 4rem;
   }
   .form {
     max-width: var(--max-width);
+    margin-top: 2rem;
   }
   .form h4 {
     text-align: center;
@@ -152,8 +146,8 @@ const Container = styled.section`
   }
   .back-home {
     text-align: center;
-    display: inline-block;
-    margin-top: 1rem;
+    display: block;
+    width: 100%;
     font-size: 1rem;
     line-height: 1.15;
     background: var(--grey-500);
@@ -162,23 +156,27 @@ const Container = styled.section`
     background: var(--black);
   }
   @media (min-width: 768px) {
+    .back-home {
+      width: 200px;
+    }
     .form h4 {
       text-align: left;
     }
     .form-container {
       display: grid;
-      grid-template-columns: 1fr 1fr 100px;
+      grid-template-columns: 1fr 1fr 100px auto;
       column-gap: 0.5rem;
       align-items: center;
     }
 
-    .submit-btn,
-    .back-home {
-      margin: 0;
-    }
-
     .form > p {
       text-align: left;
+    }
+    .form-row {
+      margin-bottom: 0;
+    }
+    .submit-btn {
+      align-self: end;
     }
   }
 `;

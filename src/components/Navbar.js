@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from '../assets/logo.svg';
-
+import { FaUserCircle, FaCaretDown } from 'react-icons/fa';
 import { useGlobalContext } from '../context/appContext';
 
 const Navbar = () => {
   const { user, logout } = useGlobalContext();
+  const [showLogout, setShowLogout] = useState(false);
   return (
     <Wrapper>
       <div className='nav-center'>
         <img src={logo} alt='jobs app' />
         {user && (
-          <div className='nav-links'>
-            <h5>hello, {user}</h5>
-            <button className='btn' onClick={logout}>
-              logout
+          <div className='btn-container'>
+            <button className='btn' onClick={() => setShowLogout(!showLogout)}>
+              <FaUserCircle />
+              {user}
+              <FaCaretDown />
             </button>
+            <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
+              <button onClick={() => logout()} className='dropdown-btn'>
+                logout
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -24,44 +31,50 @@ const Navbar = () => {
 };
 
 const Wrapper = styled.nav`
+  height: 6rem;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
   .nav-center {
     width: var(--fluid-width);
+    max-width: var(--max-width);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  img {
-    display: block;
-    margin: 0 auto;
-    margin-top: 1rem;
+  .btn-container {
+    position: relative;
   }
-  .nav-links {
+  .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    gap: 0 0.5rem;
+    position: relative;
   }
-  .nav-links h5 {
-    margin: 0;
-    margin-right: 2rem;
-  }
-  @media (min-width: 576px) {
-    height: 6rem;
 
-    .nav-center {
-      max-width: var(--max-width);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .nav-links {
-      margin-top: 0;
-    }
-    img {
-      margin-top: 0;
-      margin-left: 0;
-    }
+  .dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 0.5rem;
+    text-align: center;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+  .show-dropdown {
+    visibility: visible;
+  }
+  .dropdown-btn {
+    background: transparent;
+    border-color: transparent;
+    color: var(--primary-500);
+    letter-spacing: var(--letterSpacing);
+    text-transform: capitalize;
+    cursor: pointer;
   }
 `;
 
