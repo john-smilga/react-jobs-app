@@ -34,7 +34,7 @@ const Jobs = () => {
           date = date.format('MMMM Do, YYYY');
           return (
             <article key={id} className='job'>
-              <span className='icon'>{company.at(0)}</span>
+              <span className='icon'>{company.charAt(0)}</span>
               <span className='position'>{position.toLowerCase()}</span>
               <span className='company'>{company}</span>
               <span className='date'>{date}</span>
