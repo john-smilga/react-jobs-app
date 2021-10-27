@@ -114,9 +114,12 @@ const Container = styled.section`
   .edit-btn {
     color: var(--green-dark);
     border-color: transparent;
+    background: transparent !important;
+    outline: transparent;
     border-radius: var(--borderRadius);
     cursor: pointer;
     display: inline-block;
+    appearance: none;
   }
   .delete-btn {
     color: var(--red-dark);
