@@ -150,10 +150,10 @@ const Container = styled.section`
     width: 100%;
     font-size: 1rem;
     line-height: 1.15;
-    background: var(--grey-500);
+    background: var(--black);
   }
   .back-home:hover {
-    background: var(--black);
+    background: var(--grey-500);
   }
   @media (min-width: 768px) {
     .back-home {
