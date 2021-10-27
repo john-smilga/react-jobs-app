@@ -64,6 +64,7 @@ const Wrapper = styled.nav`
     text-align: center;
     visibility: hidden;
     transition: var(--transition);
+    border-radius: var(--borderRadius);
   }
   .show-dropdown {
     visibility: visible;
