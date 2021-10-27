@@ -50,13 +50,16 @@ function Update() {
 
   if (!editItem || error) {
     return (
-      <ErrorContainer className='page'>
-        <h5>There was an error, please double check your job ID</h5>
+      <>
+        {!user && <Redirect to='/' />}
+        <ErrorContainer className='page'>
+          <h5>There was an error, please double check your job ID</h5>
 
-        <Link to='/dashboard' className='btn'>
-          dasboard
-        </Link>
-      </ErrorContainer>
+          <Link to='/dashboard' className='btn'>
+            dasboard
+          </Link>
+        </ErrorContainer>
+      </>
     );
   }
   return (
