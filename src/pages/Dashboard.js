@@ -66,7 +66,7 @@ function Dashboard() {
 }
 
 const Wrapper = styled.section`
-  margin-top: 3rem;
+  padding: 3rem 0;
 
   .job-form {
     background: var(--white);
